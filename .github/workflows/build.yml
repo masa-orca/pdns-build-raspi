@@ -38,6 +38,11 @@ jobs:
         with:
           platforms: linux/arm64
 
+      - run: git clone https://github.com/PowerDNS/pdns.git
+
+      - run: git clone https://github.com/PowerDNS/pdns-builder.git pdns/builder
+      - run: ./builder/build.sh debian-bookworm-arm64
+        working-directory: pdns
     #   - name: Build and Push to Docker Hub
     #     uses: docker/build-push-action@v2
     #     with:
