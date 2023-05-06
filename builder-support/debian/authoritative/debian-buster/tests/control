@@ -1,0 +1,30 @@
+Tests: smoke-bind
+Depends: dnsutils,
+         pdns-backend-bind,
+         pdns-server
+Restrictions: needs-root
+
+Tests: smoke-mysql
+Depends: dnsutils,
+         mariadb-server,
+         pdns-backend-mysql,
+         pdns-server
+Restrictions: needs-root, isolation-container
+
+Tests: smoke-mysql-sp
+Depends: dnsutils,
+         mariadb-server,
+         pdns-backend-mysql,
+         pdns-server
+Restrictions: needs-root, isolation-container
+
+Tests: smoke-pgsql
+Depends: dnsutils,
+         pdns-backend-pgsql,
+         pdns-server,
+         postgresql
+Restrictions: needs-root, isolation-container
+
+Tests: supported-algos
+Depends: pdns-server
+Restrictions: isolation-container
