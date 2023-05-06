@@ -37,9 +37,14 @@ jobs:
         uses: docker/setup-buildx-action@v2
         with:
           platforms: linux/arm64
-      - run: git clone https://github.com/PowerDNS/pdns.git
+      - run: git clone -b rec-4.8.4 https://github.com/PowerDNS/pdns.git
+
 
       - run: git clone https://github.com/PowerDNS/pdns-builder.git pdns/builder
     #   - run: ./builder/build.sh debian-bookworm-arm64
-      - run:  docker buildx build -f Dockerfile-auth -t pdns-auth-master:raspi .
+      - run:  docker buildx build -f Dockerfile-recursor -t pdns-recursor:raspi .
+        working-directory: pdns
+      - run:  docker buildx build -f Dockerfile-dnsdist -t dnsdist:raspi .
+        working-directory: pdns
+      - run:  docker buildx build -f Dockerfile-auth -t pdns-auth:raspi .
         working-directory: pdns
