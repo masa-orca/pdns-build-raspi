@@ -48,3 +48,4 @@ jobs:
         working-directory: pdns
       - run:  docker buildx build -f Dockerfile-auth -t pdns-auth:raspi .
         working-directory: pdns
+      - run: docker images
