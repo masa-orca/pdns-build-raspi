@@ -44,7 +44,7 @@ jobs:
       - name: Build and Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          context: pdns
+          context: "{{defaultContext}}:pdns"
           builder: ${{ steps.buildx.outputs.name }}
           file: Dockerfile-auth
           platforms: ${{ steps.buildx.outputs.platforms }}
