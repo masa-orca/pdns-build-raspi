@@ -17,9 +17,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: username/repository-name
-          tags: |
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
+          tags: raspi
 
     #   - name: Login to Docker Hub
     #     uses: docker/login-action@v2
@@ -41,16 +39,18 @@ jobs:
       - run: git clone https://github.com/PowerDNS/pdns.git
 
       - run: git clone https://github.com/PowerDNS/pdns-builder.git pdns/builder
-      - run: ./builder/build.sh debian-bookworm-arm64
-        working-directory: pdns
-    #   - name: Build and Push to Docker Hub
-    #     uses: docker/build-push-action@v2
-    #     with:
-    #       context: .
-    #       builder: ${{ steps.buildx.outputs.name }}
-    #       platforms: ${{ steps.buildx.outputs.platforms }}
-    #       push: true
-    #       tags: ${{ steps.metadata.outputs.tags }}
-    #       labels: ${{ steps.metadata.outputs.labels }}
-    #       cache-from: type=gha
-    #       cache-to: type=gha,mode=max
+    #   - run: ./builder/build.sh debian-bookworm-arm64
+    #     working-directory: pdns
+      - name: Build and Push to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          context: pdns
+          builder: ${{ steps.buildx.outputs.name }}
+          file: Dockerfile-auth
+          platforms: ${{ steps.buildx.outputs.platforms }}
+          push: false
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
