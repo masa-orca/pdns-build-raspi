@@ -1,3 +1,0 @@
-#!/bin/sh
-
-cleandig host-0.example.com EUI48 

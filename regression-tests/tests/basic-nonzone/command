@@ -1,4 +1,0 @@
-#!/bin/sh
-cleandig nztest.com A
-cleandig testnz.com A | tail -n2
-

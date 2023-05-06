@@ -1,2 +1,0 @@
-This test makes sure identical SRV records with differing weights both get
-served.

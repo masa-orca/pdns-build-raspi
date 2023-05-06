@@ -1,3 +1,0 @@
-zonefile=root-servers.net.zone
-origin=root-servers.net
-expected_result=success

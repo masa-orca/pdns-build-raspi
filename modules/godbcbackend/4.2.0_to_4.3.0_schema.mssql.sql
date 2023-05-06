@@ -1,1 +1,0 @@
-ALTER TABLE cryptokeys ADD COLUMN published BIT DEFAULT 1;

@@ -1,4 +1,0 @@
-venv/
-Dockerfile.*
-pdns.list.*
-pkg-pin

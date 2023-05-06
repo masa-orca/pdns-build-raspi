@@ -1,1 +1,0 @@
-../fstrm_logger.cc

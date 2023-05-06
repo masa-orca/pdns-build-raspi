@@ -1,3 +1,0 @@
-#!/bin/sh
-cleandig cryptokeys.org DNSKEY dnssec
-cleandig hiddencryptokeys.org DNSKEY dnssec

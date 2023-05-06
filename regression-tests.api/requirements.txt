@@ -1,5 +1,0 @@
-requests==2.20.0
-pytest
-parameterized
-mysql-connector
-psycopg2

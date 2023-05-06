@@ -1,3 +1,0 @@
-#!/bin/sh
-cleandig 1.2.0.192.in-addr.arpa. PTR
-

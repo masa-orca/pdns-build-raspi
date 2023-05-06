@@ -1,3 +1,0 @@
-If we CNAME to another locally-hosted domain, while following the chain,
-we should make sure to update the left hand side too, even when hitting
-a wildcard.

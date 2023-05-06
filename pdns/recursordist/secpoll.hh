@@ -1,1 +1,0 @@
-../secpoll.hh

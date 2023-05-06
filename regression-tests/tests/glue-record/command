@@ -1,2 +1,0 @@
-#!/bin/sh
-cleandig usa-ns2.usa.example.com A

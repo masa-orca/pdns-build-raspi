@@ -1,1 +1,0 @@
-This test verifies that LMDB ID generation is sequential, unless configured with lmdb-random-ids=yes

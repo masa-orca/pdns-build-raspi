@@ -1,3 +1,0 @@
-#!/bin/sh
-
-cleandig middle.test.invalid A dnssec

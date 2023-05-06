@@ -1,2 +1,0 @@
-#!/bin/sh
-cleandig dsdelegation.example.com DS dnssec

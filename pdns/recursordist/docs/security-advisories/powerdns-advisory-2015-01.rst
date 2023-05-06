@@ -1,1 +1,0 @@
-../../../../docs/security-advisories/powerdns-advisory-2015-01.rst

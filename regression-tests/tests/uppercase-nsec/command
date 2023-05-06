@@ -1,2 +1,0 @@
-#!/bin/sh
-cleandig z.Test.com A dnssec

@@ -1,1 +1,0 @@
-../test-proxy_protocol_cc.cc

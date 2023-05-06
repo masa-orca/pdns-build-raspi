@@ -1,2 +1,0 @@
-This test checks if we delete NS records properly from the zone apex. There must
-always remain 1 NS record at the zone apex.

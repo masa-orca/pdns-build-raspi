@@ -1,3 +1,0 @@
-#!/bin/sh
-cleandig ns1.example.com AAAA
-

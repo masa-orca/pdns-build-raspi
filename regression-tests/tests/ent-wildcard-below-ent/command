@@ -1,2 +1,0 @@
-#!/bin/sh
-cleandig something.a.b.c.test.com A dnssec

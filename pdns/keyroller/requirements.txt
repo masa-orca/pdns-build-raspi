@@ -1,5 +1,0 @@
-PyYAML
-pytimeparse
-requests
-json_tricks
-nose

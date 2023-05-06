@@ -1,2 +1,0 @@
-#!/bin/sh
-cleandig host-1234x.example.com NSEC dnssec

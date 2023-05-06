@@ -1,3 +1,0 @@
-zonefile=zonemd.packet-pushers.com.badsig
-origin=zonemd.packet-pushers.com
-expected_result=success

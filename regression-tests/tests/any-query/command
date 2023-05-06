@@ -1,3 +1,0 @@
-#!/bin/sh
-SDIGBUFSIZE=32768 cleandig example.com ANY dnssec tcp
-

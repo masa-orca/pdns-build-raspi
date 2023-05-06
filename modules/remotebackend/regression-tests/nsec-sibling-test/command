@@ -1,3 +1,0 @@
-#!/bin/sh
-
-cleandig jump.up.example.com A dnssec

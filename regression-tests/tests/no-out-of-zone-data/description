@@ -1,2 +1,0 @@
-Ensure that we don't send out of zone data in the additional section when processing
-e.g. SRV, MX and NS records

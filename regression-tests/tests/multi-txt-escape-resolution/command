@@ -1,3 +1,0 @@
-#!/bin/sh
-cleandig escapedtext.example.com TXT
-

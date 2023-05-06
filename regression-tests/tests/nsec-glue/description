@@ -1,2 +1,0 @@
-This test verifies that an NXDOMAIN that would order right before a glue
-record skips that glue record.

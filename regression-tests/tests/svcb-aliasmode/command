@@ -1,3 +1,0 @@
-#!/bin/sh
-cleandig foo.svcb.example.com SVCB dnssec
-cleandig baz.svcb.example.com SVCB dnssec

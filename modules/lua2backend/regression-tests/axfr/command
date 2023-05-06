@@ -1,2 +1,0 @@
-#!/bin/sh
-cleandig test.invalid AXFR showflags unhash

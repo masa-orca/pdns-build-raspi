@@ -1,3 +1,0 @@
-zonefile=root.zone.hashed
-origin=.
-expected_result=success

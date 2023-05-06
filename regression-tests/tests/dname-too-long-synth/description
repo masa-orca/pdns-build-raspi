@@ -1,2 +1,0 @@
-Check that we send YXDOMAIN when we can't synthesise a too long CNAME
-from a DNAME.

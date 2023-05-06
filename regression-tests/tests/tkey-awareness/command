@@ -1,3 +1,0 @@
-#!/bin/sh
-
-tkey.py $nameserver $port

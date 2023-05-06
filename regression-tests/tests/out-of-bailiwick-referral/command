@@ -1,2 +1,0 @@
-#!/bin/sh
-cleandig www.france.example.com A
