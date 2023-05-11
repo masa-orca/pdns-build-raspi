@@ -49,6 +49,7 @@ jobs:
           docker buildx build
           -f Dockerfile-${{ matrix.docker_image }}
           -t pdns-${{ matrix.docker_image }}:rec-4.8.4
+          --platform linux/arm64
           -o type=docker,dest=- . > pdns-${{ matrix.docker_image }}.tar
         working-directory: pdns
       - run: docker images
