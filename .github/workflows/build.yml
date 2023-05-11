@@ -7,7 +7,12 @@ jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        docker_image:
+          - recursor
+          - dnsdist
+          - auth
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -18,12 +23,6 @@ jobs:
         with:
           images: username/repository-name
           tags: raspi
-
-    #   - name: Login to Docker Hub
-    #     uses: docker/login-action@v2
-    #     with:
-    #       username: ${{ secrets.DOCKERHUB_USERNAME }}
-    #       password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - # Add support for more platforms with QEMU (optional)
         # https://github.com/docker/setup-qemu-action
@@ -37,15 +36,27 @@ jobs:
         uses: docker/setup-buildx-action@v2
         with:
           platforms: linux/arm64
-      - run: git clone -b rec-4.8.4 https://github.com/PowerDNS/pdns.git
+
+      - name: Colne pdns
+        run: git clone -b rec-4.8.4 https://github.com/PowerDNS/pdns.git
+
+      - name: Colne pdns-builder
+        run: git clone https://github.com/PowerDNS/pdns-builder.git pdns/builder
 
       - run: cp Dockerfile-auth pdns/Dockerfile-auth
 
-      - run: git clone https://github.com/PowerDNS/pdns-builder.git pdns/builder
-      - run:  docker buildx build --platform linux/arm64 -f Dockerfile-recursor -t pdns-recursor:raspi .
-        working-directory: pdns
-      - run:  docker buildx build --platform linux/arm64 -f Dockerfile-dnsdist -t dnsdist:raspi .
-        working-directory: pdns
-      - run:  docker buildx build --platform linux/arm64 -f Dockerfile-auth -t pdns-auth:raspi .
+      - run: >-
+          docker buildx build
+          -f Dockerfile-${{ matrix.docker_image }}
+          -t pdns-${{ matrix.docker_image }}:rec-4.8.4
+          -o type=docker,dest=- . > pdns-${{ matrix.docker_image }}.tar
         working-directory: pdns
       - run: docker images
+      - run: ls -ls pdns/pdns-${{ matrix.docker_image }}.tar
+
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: pdns-${{ matrix.docker_image }}
+          path: pdns/pdns-${{ matrix.docker_image }}.tar
+          retention-days: 1
