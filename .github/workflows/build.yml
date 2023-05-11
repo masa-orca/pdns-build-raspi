@@ -39,9 +39,9 @@ jobs:
           platforms: linux/arm64
       - run: git clone -b rec-4.8.4 https://github.com/PowerDNS/pdns.git
 
+      - run: cp Dockerfile-auth pdns/Dockerfile-auth
 
       - run: git clone https://github.com/PowerDNS/pdns-builder.git pdns/builder
-    #   - run: ./builder/build.sh debian-bookworm-arm64
       - run:  docker buildx build -f Dockerfile-recursor -t pdns-recursor:raspi .
         working-directory: pdns
       - run:  docker buildx build -f Dockerfile-dnsdist -t dnsdist:raspi .
