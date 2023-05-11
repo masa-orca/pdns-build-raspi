@@ -42,10 +42,10 @@ jobs:
       - run: cp Dockerfile-auth pdns/Dockerfile-auth
 
       - run: git clone https://github.com/PowerDNS/pdns-builder.git pdns/builder
-      - run:  docker buildx build --platform linux/amd64 -f Dockerfile-recursor -t pdns-recursor:raspi .
+      - run:  docker buildx build --platform linux/arm64 -f Dockerfile-recursor -t pdns-recursor:raspi .
         working-directory: pdns
-      - run:  docker buildx build --platform linux/amd64 -f Dockerfile-dnsdist -t dnsdist:raspi .
+      - run:  docker buildx build --platform linux/arm64 -f Dockerfile-dnsdist -t dnsdist:raspi .
         working-directory: pdns
-      - run:  docker buildx build --platform linux/amd64 -f Dockerfile-auth -t pdns-auth:raspi .
+      - run:  docker buildx build --platform linux/arm64 -f Dockerfile-auth -t pdns-auth:raspi .
         working-directory: pdns
       - run: docker images
