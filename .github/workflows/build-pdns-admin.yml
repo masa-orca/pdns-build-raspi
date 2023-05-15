@@ -40,7 +40,7 @@ jobs:
           -t pda-legacy:v0.4.1
           --platform linux/arm64
           -o type=docker,dest=- . > pda-legacy.tar
-        working-directory: docker
+        working-directory: PowerDNS-Admin/docker
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
