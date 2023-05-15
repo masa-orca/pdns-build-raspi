@@ -1,4 +1,4 @@
-name: Build Docker image
+name: Build pdns-admin Docker image
 
 on:
   push:
@@ -36,15 +36,15 @@ jobs:
 
       - run: >-
           docker buildx build
-          -f Dockerfile
+          -f docker/Dockerfile
           -t pda-legacy:v0.4.1
           --platform linux/arm64
           -o type=docker,dest=- . > pda-legacy.tar
-        working-directory: PowerDNS-Admin/docker
+        working-directory: PowerDNS-Admin
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
         with:
           name: pda-legacy
-          path: PowerDNS-Admin/docker/pda-legacy.tar
+          path: PowerDNS-Admin/pda-legacy.tar
           retention-days: 1

@@ -1,4 +1,4 @@
-name: Build Docker image
+name: Build pdns Docker images
 
 on:
   push:
