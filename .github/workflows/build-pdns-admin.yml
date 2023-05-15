@@ -1,0 +1,50 @@
+name: Build Docker image
+
+on:
+  push:
+
+jobs:
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Docker meta
+        id: metadata
+        uses: docker/metadata-action@v4
+        with:
+          images: username/repository-name
+          tags: raspi
+
+      - # Add support for more platforms with QEMU (optional)
+        # https://github.com/docker/setup-qemu-action
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+        with:
+          platforms: arm64
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2
+        with:
+          platforms: linux/arm64
+
+      - name: Colne pdns
+        run: git clone -b v0.4.1 https://github.com/PowerDNS-Admin/PowerDNS-Admin.git
+
+      - run: >-
+          docker buildx build
+          -f Dockerfile
+          -t pda-legacy:v0.4.1
+          --platform linux/arm64
+          -o type=docker,dest=- . > pda-legacy.tar
+        working-directory: docker
+
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: pda-legacy
+          path: docker/pda-legacy.tar
+          retention-days: 1
